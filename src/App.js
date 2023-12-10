@@ -1,11 +1,11 @@
 import './App.css';
-import Table from './Table';
-import { Users } from './users';
+import Table from './Articles';
+import { Articles } from './articleData';
 import React, { useState } from 'react';
 function App() {
   const [query, setQuery] = useState("");
   const search = (data) =>{
-    return data.filter((item) => item.first_name.toLowerCase().includes(query) || item.last_name.toLowerCase().includes(query) ||item.email.toLowerCase().includes(query))
+    return data.filter((item) => item.title.toLowerCase().includes(query) || item.date.toLowerCase().includes(query) ||item.description.toLowerCase().includes(query))
   }
   return (
     <div className="app">
@@ -14,7 +14,7 @@ function App() {
         className="search"
         onChange={(e) => setQuery(e.target.value)}
         />
-    <Table data={search(Users)} query={query}/>
+    <Table data={search(Articles)} query={query}/>
     </div>
   );
 }
